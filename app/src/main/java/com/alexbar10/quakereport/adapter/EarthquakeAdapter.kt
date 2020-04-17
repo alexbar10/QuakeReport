@@ -1,6 +1,7 @@
 package com.alexbar10.quakereport.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,8 +29,11 @@ class EarthquakeAdapter(context: Context, @LayoutRes itemResource: Int, data: Li
         val magView = itemView?.findViewById<TextView>(R.id.mag_text_view)
         magView?.text = earthquake?.mag.toString()
 
+        val locationCads = StringUtils.getLocationMessages(earthquake?.location ?: "")
+        val locationNearView = itemView?.findViewById<TextView>(R.id.location_near_text_view)
+        locationNearView?.text = locationCads.first
         val locationView = itemView?.findViewById<TextView>(R.id.location_text_view)
-        locationView?.text = earthquake?.location
+        locationView?.text = locationCads.second
 
         val dateAndTime = StringUtils.getDateFormatted(earthquake?.date ?: 0.0)
         val dateView = itemView?.findViewById<TextView>(R.id.date_text_view)

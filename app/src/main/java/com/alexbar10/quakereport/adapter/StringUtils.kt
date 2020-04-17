@@ -13,5 +13,21 @@ class StringUtils {
 
             return Pair(dateFormatter.format(date), timeFormatter.format(date))
         }
+
+        private const val separator = " of "
+        fun getLocationMessages(location: String) : Pair<String, String> {
+            val cads = location.split(separator)
+            return when (cads.size) {
+                1 -> {
+                    Pair("Near of", cads.first())
+                }
+                2 -> {
+                    Pair(cads.first() + separator, cads[1])
+                }
+                else -> {
+                    Pair("NA","NA")
+                }
+            }
+        }
     }
 }
