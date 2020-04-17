@@ -27,7 +27,7 @@ class EarthquakeAdapter(context: Context, @LayoutRes itemResource: Int, data: Li
 
         // Assign values to view
         val magView = itemView?.findViewById<TextView>(R.id.mag_text_view)
-        magView?.text = earthquake?.mag.toString()
+        magView?.text = StringUtils.getMagnitudeFormatted(earthquake?.mag ?: 0.0)
 
         val locationCads = StringUtils.getLocationMessages(earthquake?.location ?: "")
         val locationNearView = itemView?.findViewById<TextView>(R.id.location_near_text_view)

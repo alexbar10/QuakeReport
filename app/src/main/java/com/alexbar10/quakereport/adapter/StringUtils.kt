@@ -1,6 +1,7 @@
 package com.alexbar10.quakereport.adapter
 
 import java.sql.Timestamp
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,5 +30,7 @@ class StringUtils {
                 }
             }
         }
+
+        fun getMagnitudeFormatted(mag: Double) = DecimalFormat("0.0").format(mag)
     }
 }
