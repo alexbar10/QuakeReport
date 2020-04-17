@@ -31,8 +31,12 @@ class EarthquakeAdapter(context: Context, @LayoutRes itemResource: Int, data: Li
         val locationView = itemView?.findViewById<TextView>(R.id.location_text_view)
         locationView?.text = earthquake?.location
 
+        val dateAndTime = StringUtils.getDateFormatted(earthquake?.date ?: 0.0)
         val dateView = itemView?.findViewById<TextView>(R.id.date_text_view)
-        dateView?.text = earthquake?.date
+        dateView?.text = dateAndTime.first
+
+        val timeView = itemView?.findViewById<TextView>(R.id.time_text_view)
+        timeView?.text = dateAndTime.second
 
         return itemView!!
     }
