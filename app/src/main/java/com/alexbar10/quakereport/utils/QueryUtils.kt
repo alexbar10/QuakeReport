@@ -40,8 +40,9 @@ class QueryUtils {
                         val mag = earthquakeJson.optJSONObject("properties")?.optDouble("mag")
                         val place = earthquakeJson.optJSONObject("properties")?.optString("place")
                         val date = earthquakeJson.optJSONObject("properties")?.optDouble("time")
+                        val url = earthquakeJson.optJSONObject("properties")?.optString("url")
 
-                        earthquakes.add(Earthquake(mag ?: 0.0, place?:"", date ?: 0.0))
+                        earthquakes.add(Earthquake(mag ?: 0.0, place?:"", date ?: 0.0,url ?: ""))
 
                     }
 

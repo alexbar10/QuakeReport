@@ -1,5 +1,7 @@
 package com.alexbar10.quakereport
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -27,5 +29,14 @@ class MainActivity : AppCompatActivity() {
         countries.add(Earthquake(7.2f, "Paris", "Feb 2, 2016"))
 */
         list_view.adapter = EarthquakeAdapter(this, R.layout.list_view_item, QueryUtils.extractEarthquakes())
+
+        list_view.setOnItemClickListener { parent, _, position, _ ->
+            val item = parent.getItemAtPosition(position) as? Earthquake
+            if (item != null) {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(item.url)
+                startActivity(intent)
+            }
+        }
     }
 }

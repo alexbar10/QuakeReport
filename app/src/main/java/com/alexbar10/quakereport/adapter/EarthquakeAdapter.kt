@@ -1,6 +1,7 @@
 package com.alexbar10.quakereport.adapter
 
 import android.content.Context
+import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +29,9 @@ class EarthquakeAdapter(context: Context, @LayoutRes itemResource: Int, data: Li
         // Assign values to view
         val magView = itemView?.findViewById<TextView>(R.id.mag_text_view)
         magView?.text = StringUtils.getMagnitudeFormatted(earthquake?.mag ?: 0.0)
+        // Get background circle
+        val backgroundCircle = magView?.background as? GradientDrawable
+        backgroundCircle?.setColor(StringUtils.getColorForMagnitude(earthquake?.mag ?: 0.0, context))
 
         val locationCads = StringUtils.getLocationMessages(earthquake?.location ?: "")
         val locationNearView = itemView?.findViewById<TextView>(R.id.location_near_text_view)
